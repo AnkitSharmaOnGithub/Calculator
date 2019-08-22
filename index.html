@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calc Project</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+		<div class="wrapper">
+			<input type="text" class="displayArea" readonly="readonly">
+
+			<section>
+				<button class="calcBtn numbers">7</button>
+				<button class="calcBtn numbers">8</button>
+				<button class="calcBtn numbers">9</button>
+				<button class="calcBtn">/</button>
+			</section>
+
+			<section>
+				<button class="calcBtn numbers">4</button>
+				<button class="calcBtn numbers">5</button>
+				<button class="calcBtn numbers">6</button>
+				<button class="calcBtn">*</button>
+			</section>
+
+			<section>
+				<button class="calcBtn numbers">3</button>
+				<button class="calcBtn numbers">2</button>
+				<button class="calcBtn numbers">1</button>
+				<button class="calcBtn">-</button>
+			</section>
+
+			<section>
+				<button class="calcBtn numbers">0</button>
+				<button class="calcBtn numbers">.</button>
+				<button class="calcBtn">=</button>
+				<button class="calcBtn">+</button>
+			</section>
+
+			<section id="ResetSection">
+				<button class="resetBtn">Reset</button>
+			</section>
+		</div>
+
+		<script type="text/javascript" defer="defer">
+			window.addEventListener('DOMContentLoaded',function(){
+				var btns = document.querySelectorAll('.calcBtn');
+
+				var display_area = document.querySelector('.displayArea');
+				
+				for(x of btns)
+				{
+					x.addEventListener('click',function(){
+						var btn_pressed = Number.isNaN(parseFloat(this.textContent)) ? this.textContent : parseFloat(this.textContent);
+
+						if(btn_pressed)
+						{
+							if(btn_pressed == "=")
+							{
+								calculate_result(display_area.value);
+							}
+							else
+							{
+								display_area.value += " " + this.textContent ;
+							}
+						}
+						else
+						{
+							display_area.value += this.textContent ;
+						}
+					});
+				}
+				
+
+
+		</script>
+</body>
+</html>
