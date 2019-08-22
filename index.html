@@ -71,7 +71,71 @@
 				}
 				
 
+				function calculate_result(content)
+				{
+					var elements = content.split(" ");
+					console.log(elements);
+					var operators = ["+","-","*","/","%"];
+					for (x of operators)
+					{
+						if(elements.includes(x))
+						{
+							console.log("Included");
 
+							var operator = x;
+
+							var lastIndex1 = elements.indexOf(x);
+							var num1 = parseFloat(elements.slice(1,elements.indexOf(x)).join(""));
+							console.log(num1);
+
+							var num2 = parseFloat(elements.slice(elements.indexOf(x)+1,elements.length).join(""));
+							console.log(num2);
+
+							switch(operator)
+							{
+								case "+" :
+									var result = num1 + num2;
+									console.log(result);
+									display_area.value += " = " +result;
+									break;
+
+								case "-" :
+									var result = num1 - num2;
+									console.log(result);
+									display_area.value += " = " +result;
+									break;
+
+								case "*" :
+									var result = num1 * num2;
+									console.log(result);
+									display_area.value += " = " +result;
+									break;
+
+								case "/" :
+									var result = num1 / num2;
+									console.log(result);
+									display_area.value += " = " +result;
+									break;
+
+								case "%" :
+									var result = num1 % num2;
+									console.log(result);
+									display_area.value += " = " +result;
+									break;
+							}
+							break;
+						}
+						else
+						{
+							console.log("NA");
+						}
+					}
+				}
+			});
+
+			document.querySelector('.resetBtn').addEventListener('click', () => {
+					document.querySelector('.displayArea').value = "";
+			});
 		</script>
 </body>
 </html>
